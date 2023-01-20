@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="trytest.test0110.Hello" scope="singleton">
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <bean id="userService" class="trytest.test0110.service.impl.UserServiceImpl">
+        <property name="dao" ref="mysqlImpl"/>
+    </bean>
+
+    <bean id ="mysqlImpl" class="trytest.test0110.dao.UserDaoMysqlImpl"/>
+    <bean id = "oracleImpl" class="trytest.test0110.dao.UserDaoOracleImpl"/>
+</beans>
