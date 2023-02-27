@@ -12,20 +12,35 @@ public class ArraySort {
 
     public static void main(String[] args) {
         ArraySort demo = new ArraySort();
-        int[] arr = {0, 8, 3, 5, 1, 7, 9, 2};
-        demo.bubbleSort(arr);
-        demo.chooseSort(arr);
-        demo.insertSort(arr);
+        int[] arr = {8, 3, 0, 6, 2, 9, 1};
+//        demo.bubbleSort(arr);
+//        demo.chooseSort(arr);
+//        demo.insertSort(arr);
+        demo.xierSort(arr);
+    }
+
+    private void xierSort(int[] arr) {
+        for (int gap = arr.length >> 1; gap > 0; gap /= 2) {
+            for (int i = gap; i < arr.length; ++i) {
+                int temp = arr[i];
+                int j;
+                for (j = i; j >= gap && temp < arr[j - gap] ; j -= gap  ) {
+                    arr[j] = arr[j - gap];
+                }
+                arr[j] = temp;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
     }
 
     private void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; ++i) {
-            int j = i;
-            while (j > 0 && arr[j] < arr[j - 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j-1];
-                arr[j - 1] = temp;
-                --j;
+            for (int k = i; k > 0; --k) {
+                if (arr[k] < arr[k - 1]) {
+                    int temp = arr[k];
+                    arr[k] = arr[k - 1];
+                    arr[k - 1] = temp;
+                }
             }
         }
         System.out.println(Arrays.toString(arr));
