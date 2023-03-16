@@ -17,15 +17,16 @@ public class YangHuiTriangle {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            List<Integer> nums = i == 0 ? new ArrayList<>() : res.get(i - 1);
+        for (int i = 0; i < num; ++i) {
+            List<Integer> nums = new ArrayList<>();
             for (int j = 0; j <= i; ++j) {
                 if (j == 0 || j == i) {
                     nums.add(1);
-                } else if (i > 2) {
+                } else {
                     nums.add(res.get(i - 1).get(j -1) + res.get(i - 1).get(j));
                 }
             }
+            res.add(nums);
         }
         for (List<Integer> re : res) {
             System.out.println(Arrays.toString(re.toArray()));
